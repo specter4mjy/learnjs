@@ -17,6 +17,10 @@ learnjs.template = function(name) {
     return $('.templates .' + name).clone();
 }
 
+learnjs.landingView = function() {
+    return learnjs.template('landing-view');
+}
+
 learnjs.problemView = function(data) {
     var problemNumber = parseInt(data, 10);
     var view = learnjs.template("problem-view");
@@ -48,7 +52,7 @@ learnjs.problemView = function(data) {
 learnjs.buildCorrectFlash = function (problemNum) {
     var correctFlash = learnjs.template('correct-flash');
     var link = correctFlash.find('a');
-    if (problemNum < learnjs.problems.leagth) {
+    if (problemNum < learnjs.problems.length) {
         link.attr('href', '#problem-' + (problemNum + 1));
     } else {
         link.attr('href', '');
@@ -59,7 +63,8 @@ learnjs.buildCorrectFlash = function (problemNum) {
 
 learnjs.showView = function(hash) {
     var routes = {
-        '#problem': learnjs.problemView
+        '#problem': learnjs.problemView,
+        '': learnjs.landingView
     };
 
     var hashParts = hash.split('-');
