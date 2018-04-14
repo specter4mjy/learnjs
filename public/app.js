@@ -64,6 +64,7 @@ learnjs.buildCorrectFlash = function (problemNum) {
 learnjs.showView = function(hash) {
     var routes = {
         '#problem': learnjs.problemView,
+        '#': learnjs.landingView,
         '': learnjs.landingView
     };
 
